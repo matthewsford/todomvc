@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<web-app version="3.1"
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         metadata-complete="false">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	metadata-complete="false">
+    <display-name>Todo Web Application</display-name>
 
-         
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/chat</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>HttpServlet30Dispatcher</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServlet30Dispatcher
+		</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>us.matthewford.todomvc.server.rest.ChatApplication
+			</param-value>
+		</init-param>
+		<async-supported>true</async-supported>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HttpServlet30Dispatcher</servlet-name>
+		<url-pattern>/chat/*</url-pattern>
+	</servlet-mapping>
+
 </web-app>
 
