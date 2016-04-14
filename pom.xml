@@ -1,212 +1,544 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2016 Matthew Ford (matthew@matthewford.us)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>us.matthewford.todomvc</groupId>
-	<artifactId>todomvc</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.2-SNAPSHOT</version>
-	<name>todomvc</name>
+<!-- The Basics -->
+  <groupId>us.matthewford.todomvc</groupId>
+  <artifactId>todomvc</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.4.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>2.0.2-beta</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8</version>
+      <scope>test</scope>
+    </dependency>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
+    <!-- core library -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxrs</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-client</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.spec</groupId>
-				<artifactId>jboss-javaee-7.0</artifactId>
-				<version>1.0.0.Final</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <!-- optional modules -->
 
-	<dependencies>
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
-			<scope>provided</scope>
-		</dependency>
+    <!-- JAXB support -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxb-provider</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <!-- multipart/form-data and multipart/mixed support -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-multipart-provider</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <!-- Resteasy Server Cache -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-cache-core</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <!-- Ruby YAML support -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-yaml-provider</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <!-- JAXB + Atom support -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-atom-provider</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <!-- Spring integration -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-spring</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+    <!-- Guice integration -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-guice</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
 
-		<!-- core library -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-client</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
+    <!-- Asynchronous HTTP support with Servlet 3.0 -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>async-http-servlet-3.0</artifactId>
+      <version>3.0.16.Final</version>
+    </dependency>
+  </dependencies>
+  <!--   <parent>...</parent> -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.spec</groupId>
+        <artifactId>jboss-javaee-7.0</artifactId>
+        <version>1.0.0.Final</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <modules></modules>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+ 
+  <!-- Build Settings -->
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.2</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.10</version>
+        <configuration>
+          <sourceExcludes>
+          </sourceExcludes>
+          <sourceIncludes>
+            <sourceInclude>${project.build.directory}/generated-test-sources/assertj-assertions</sourceInclude>
+          </sourceIncludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
+          <docletArtifact>
+            <groupId>ch.raffael.pegdown-doclet</groupId>
+            <artifactId>pegdown-doclet</artifactId>
+            <version>1.1</version>
+          </docletArtifact>
+          <useStandardDocletOptions>true</useStandardDocletOptions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+        <version>2.0.0</version>
+  
+        <!-- generate assertions at every build -->
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate-assertions</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
 
-		<!-- optional modules -->
+          <!-- list the package whose classes you want to generate assertions for -->
+          <packages>
+          </packages>
 
-		<!-- JAXB support -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxb-provider</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<!-- multipart/form-data and multipart/mixed support -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-multipart-provider</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<!-- Resteasy Server Cache -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-cache-core</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<!-- Ruby YAML support -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-yaml-provider</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<!-- JAXB + Atom support -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-atom-provider</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<!-- Spring integration -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-spring</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-		<!-- Guice integration -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-guice</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
+          <!-- list the classes you want to generate assertions for -->
+          <classes>
+            <param>javax.ws.rs.core.Response</param>
+          </classes>
 
-		<!-- Asynchronous HTTP support with Servlet 3.0 -->
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>async-http-servlet-3.0</artifactId>
-			<version>3.0.16.Final</version>
-		</dependency>
-	</dependencies>
+          <!-- wether generated assertions classes can be inherited with consistent assertion chaining -->
+          <hierarchical>true</hierarchical>
 
-	<build>
-		<finalName>${project.artifactId}</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.4.v20120524</version>
-				<configuration>
-					<webApp>
-						<contextPath>/</contextPath>
-					</webApp>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<stopKey>foo</stopKey>
-					<stopPort>9999</stopPort>
-				</configuration>
-				<executions>
-					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<scanIntervalSeconds>0</scanIntervalSeconds>
-							<daemon>true</daemon>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.0.Beta1</version>
-				<configuration>
-                    <server-args>
-                        <server-arg>-Djboss.server.base.dir=/home/matthew/dev/wildfly-10.0.0.Final/standalone</server-arg>
-                        <modules-path>/home/matthew/dev/wildfly-10.0.0.Final/modules/</modules-path>
-                    </server-args>
-                </configuration>
-                			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-				<executions>
-					<execution>
-						<id>surefire-it</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+          <!-- where to generate assertions entry point classes -->
+          <entryPointClassPackage>org.assertj</entryPointClassPackage>
 
-	<profiles>
-		<profile>
-			<!-- When built in OpenShift the 'openshift' profile will be used when 
-				invoking mvn. Use this profile for any OpenShift specific customization your 
-				app will need. By default that is to put the resulting archive into the 'deployments' 
-				folder. -->
-			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-			<id>openshift</id>
-			<build>
-				<finalName>todomvc</finalName>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>2.3</version>
-						<configuration>
-							<failOnMissingWebXml>false</failOnMissingWebXml>
-							<outputDirectory>deployments</outputDirectory>
-							<warName>ROOT</warName>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+          <!-- restrict classes to generate assertions for with regex -->
+          <includes>
+          </includes>
+
+          <!-- excludes with regex classes from generation -->
+          <excludes>
+          </excludes>
+
+          <!-- base directory where to generate assertions -->
+          <!-- <targetDir>src/test/generated-assertions</targetDir> -->
+
+          <!-- select which assertions entry point classes to generate -->
+          <generateAssertions>true</generateAssertions>
+          <generateBddAssertions>true</generateBddAssertions>
+          <generateSoftAssertions>true</generateSoftAssertions>
+          <generateJUnitSoftAssertions>true</generateJUnitSoftAssertions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.10</version>
+        <executions>
+          <execution>
+            <id>add-test-sources</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/generated-test-sources/assertj-assertions</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>2.11</version>
+        <configuration>
+          <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+          <properties>
+            <owner>Matthew Ford</owner>
+            <email>matthew@matthewford.us</email>
+          </properties>
+          <excludes>
+            <exclude>.openshift/**</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.6.201602180812</version>
+        <configuration>
+          <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+          <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>jacoco-site</id>
+            <phase>package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>8.1.4.v20120524</version>
+        <configuration>
+          <webApp>
+            <contextPath>/</contextPath>
+          </webApp>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <stopKey>foo</stopKey>
+          <stopPort>9999</stopPort>
+        </configuration>
+        <executions>
+          <execution>
+            <id>start-jetty</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <scanIntervalSeconds>0</scanIntervalSeconds>
+              <daemon>true</daemon>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-jetty</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.1.9</version>
+        <configuration>
+          <targetClasses>
+            <param>us.matthewford.todomvc.server.*</param>
+          </targetClasses>
+          <targetTests>
+            <param>us.matthewford.todomvc.server.*</param>
+          </targetTests>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>1.0.0.Beta1</version>
+        <configuration>
+          <server-args>
+            <server-arg>-Djboss.server.base.dir=/home/matthew/dev/wildfly-10.0.0.Final/standalone</server-arg>
+            <modules-path>/home/matthew/dev/wildfly-10.0.0.Final/modules/</modules-path>
+          </server-args>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <skip>false</skip>
+          <suiteXmlFiles>
+            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+        <executions>
+          <execution>
+            <id>surefire-it</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skip>false</skip>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <configLocation>${project.basedir}/config/checkstyle/checkstyle.xml</configLocation>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>6.17</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <configLocation>${project.basedir}/config/checkstyle/checkstyle.xml</configLocation>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.6</version>
+        <configuration>
+          <linkXref>true</linkXref>
+          <minimumTokens>6</minimumTokens>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <targetJdk>1.8</targetJdk>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <url></url>
+          <connection></connection>
+          <webAccessUrl>https://github.com/matthewsford/todomvc</webAccessUrl>
+          <anonymousConnection>scm:git:https://github.com/matthewsford/todomvc.git</anonymousConnection>
+          <developerConnection>scm:git:git@github.com:matthewsford/todomvc.git</developerConnection>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.3</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>2.0</version>
+      </plugin>
+    </plugins>
+  </reporting>
+ 
+  <!-- More Project Information -->
+  <name>todomvc</name>
+  <description>The goal of this project is to build an example Todo application using Angular2 and Wildfly that can be used as a starting point for building more useful applications.</description>
+  <url>https://github.com/matthewsford/todomvc</url>
+  <inceptionYear>2016</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>The code is licensed under Apache-2.0.</comments>
+    </license>
+    <license>
+      <name>Creative Commons Attribution 4.0 International License</name>
+      <url>http://creativecommons.org/licenses/by/4.0/</url>
+      <distribution>repo</distribution>
+      <comments>Website content and documentation is licensed under CC-BY-4.0.</comments>
+    </license>
+  </licenses>
+  <!--<organization>Not Applicable?</organization>-->
+  <developers>
+    <developer>
+      <id>matthew</id>
+      <name>Matthew Ford</name>
+      <email>matthew@matthewford.us</email>
+      <url>https://www.matthewford.us/</url>
+      <!--<organization>Not Applicable?</organization>
+      <organizationUrl>http://www.example.com</organizationUrl> -->
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>America/New_York</timezone>
+      <properties>
+        <picUrl>https://s.gravatar.com/avatar/a821c83ff8c918df2bce467a5a4b37a5?s=80</picUrl>
+      </properties>
+    </developer>
+  </developers>
+    <!--<contributors>Not Applicable?</contributors>-->
+ 
+  <!-- Environment Settings -->
+  <issueManagement>
+    <url>https://github.com/matthewsford/todomvc/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+    <!--<ciManagement>
+    ...
+  </ciManagement>
+  <mailingLists>
+    ...
+  </mailingLists>-->
+  <scm>
+    <url>https://github.com/kevinsawicki/github-maven-example</url>
+    <connection>scm:git:https://github.com/matthewsford/todomvc.git</connection>
+    <developerConnection>scm:git:git@github.com:matthewsford/todomvc.git</developerConnection>
+  </scm>
+  <prerequisites>
+    <maven>2.0</maven>
+  </prerequisites>
+  <!--<repositories>
+    ...
+  </repositories>
+  <pluginRepositories>
+    ...
+  </pluginRepositories>
+  <distributionManagement>
+    ...
+  </distributionManagement>-->
+  <profiles>
+    <profile>
+      <!-- When built in OpenShift the 'openshift' profile will be used when 
+           invoking mvn. Use this profile for any OpenShift specific customization your 
+           app will need. By default that is to put the resulting archive into the 'deployments' 
+           folder. -->
+      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+      <id>openshift</id>
+      <build>
+        <finalName>todomvc</finalName>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+              <failOnMissingWebXml>false</failOnMissingWebXml>
+              <outputDirectory>deployments</outputDirectory>
+              <warName>ROOT</warName>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
