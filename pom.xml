@@ -29,31 +29,31 @@
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
-      <version>7.0</version>
+      <version>${javaee-api.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.4.1</version>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
-      <version>2.0.2-beta</version>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.7.2</version>
+      <version>${slf4j.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.8</version>
+      <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -61,12 +61,12 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jaxrs</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-client</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
 
     <!-- optional modules -->
@@ -75,50 +75,50 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jaxb-provider</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <!-- multipart/form-data and multipart/mixed support -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-multipart-provider</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <!-- Resteasy Server Cache -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-cache-core</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <!-- Ruby YAML support -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-yaml-provider</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <!-- JAXB + Atom support -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-atom-provider</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <!-- Spring integration -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-spring</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
     <!-- Guice integration -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-guice</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
 
     <!-- Asynchronous HTTP support with Servlet 3.0 -->
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>async-http-servlet-3.0</artifactId>
-      <version>3.0.16.Final</version>
+      <version>${resteasy.version}</version>
     </dependency>
   </dependencies>
   <!--   <parent>...</parent> -->
@@ -127,7 +127,7 @@
       <dependency>
         <groupId>org.jboss.spec</groupId>
         <artifactId>jboss-javaee-7.0</artifactId>
-        <version>1.0.0.Final</version>
+        <version>${jboss-javaee-7.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -138,6 +138,36 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <assertj.version>3.4.1</assertj.version>
+    <assertj-assertions-generator-maven-plugin.version>2.0.0</assertj-assertions-generator-maven-plugin.version>
+    <build-helper-maven.plugin.version>1.10</build-helper-maven.plugin.version>
+    <checkstyle.version>6.17</checkstyle.version>
+    <findbugs-maven-plugin.version>3.0.3</findbugs-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
+    <javaee-api.version>7.0</javaee-api.version>
+    <jboss-javaee-7.version>1.0.3.Final</jboss-javaee-7.version>
+    <jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
+    <jetty-maven-plugin.version>8.1.16.v20140903</jetty-maven-plugin.version>
+    <license-maven-plugin.version>2.11</license-maven-plugin.version>
+    <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+    <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+    <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+    <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+    <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+    <maven-pmd-plugin.version>3.6</maven-pmd-plugin.version>
+    <maven-project-info-reports-plugin>2.9</maven-project-info-reports-plugin>
+    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    <maven-war-plugin.version>2.6</maven-war-plugin.version>
+    <mockito.version>2.0.2-beta</mockito.version>
+    <pegdown-doclet.version>1.2.1</pegdown-doclet.version>
+    <pitest-maven.version>1.1.9</pitest-maven.version>
+    <resteasy.version>3.0.16.Final</resteasy.version>
+    <slf4j.version>1.7.21</slf4j.version>
+    <testng.version>6.9.10</testng.version>
+    <version-eye-maven-plugin.version>3.9.1</version-eye-maven-plugin.version>
+    <wildfly-maven-plugin.version>1.0.2.Final</wildfly-maven-plugin.version>
   </properties>
  
   <!-- Build Settings -->
@@ -145,9 +175,14 @@
     <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
+        <groupId>com.versioneye</groupId>
+        <artifactId>versioneye-maven-plugin</artifactId>
+        <version>${version-eye-maven-plugin.version}</version>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
-        <version>2.8.2</version>
+        <version>${maven-deploy-plugin.version}</version>
         <configuration>
           <skip>true</skip>
         </configuration>
@@ -155,7 +190,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
-        <version>2.10</version>
+        <version>${maven-eclipse-plugin.version}</version>
         <configuration>
           <sourceExcludes>
           </sourceExcludes>
@@ -167,13 +202,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.3</version>
+        <version>${maven-javadoc-plugin.version}</version>
         <configuration>
           <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
           <docletArtifact>
             <groupId>ch.raffael.pegdown-doclet</groupId>
             <artifactId>pegdown-doclet</artifactId>
-            <version>1.1</version>
+            <version>${pegdown-doclet.version}</version>
           </docletArtifact>
           <useStandardDocletOptions>true</useStandardDocletOptions>
         </configuration>
@@ -181,7 +216,7 @@
       <plugin>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
-        <version>2.0.0</version>
+        <version>${assertj-assertions-generator-maven-plugin.version}</version>
   
         <!-- generate assertions at every build -->
         <executions>
@@ -229,7 +264,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.10</version>
+        <version>${build-helper-maven.plugin.version}</version>
         <executions>
           <execution>
             <id>add-test-sources</id>
@@ -248,7 +283,7 @@
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
-        <version>2.11</version>
+        <version>${license-maven-plugin.version}</version>
         <configuration>
           <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
           <properties>
@@ -270,7 +305,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.6.201602180812</version>
+        <version>${jacoco-maven-plugin.version}</version>
         <configuration>
           <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
           <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
@@ -294,7 +329,7 @@
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>8.1.4.v20120524</version>
+        <version>${jetty-maven-plugin.version}</version>
         <configuration>
           <webApp>
             <contextPath>/</contextPath>
@@ -327,7 +362,7 @@
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
-        <version>1.1.9</version>
+        <version>${pitest-maven.version}</version>
         <configuration>
           <targetClasses>
             <param>us.matthewford.todomvc.server.*</param>
@@ -340,7 +375,7 @@
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
-        <version>1.0.0.Beta1</version>
+        <version>${wildfly-maven-plugin.version}</version>
         <configuration>
           <server-args>
             <server-arg>-Djboss.server.base.dir=/home/matthew/dev/wildfly-10.0.0.Final/standalone</server-arg>
@@ -351,7 +386,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <skip>false</skip>
           <suiteXmlFiles>
@@ -374,7 +409,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>${maven-checkstyle-plugin.version}</version>
         <configuration>
           <configLocation>${project.basedir}/config/checkstyle/checkstyle.xml</configLocation>
         </configuration>
@@ -382,17 +417,17 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>6.17</version>
+            <version>${checkstyle.version}</version>
           </dependency>
         </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>${maven-compiler-plugin.version}</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
     </plugins>
@@ -402,7 +437,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>${maven-checkstyle-plugin.version}</version>
         <configuration>
           <configLocation>${project.basedir}/config/checkstyle/checkstyle.xml</configLocation>
         </configuration>
@@ -410,23 +445,23 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.5</version>
+        <version>${maven-jxr-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.6</version>
+        <version>${maven-pmd-plugin.version}</version>
         <configuration>
           <linkXref>true</linkXref>
-          <minimumTokens>6</minimumTokens>
-          <sourceEncoding>utf-8</sourceEncoding>
-          <targetJdk>1.8</targetJdk>
+          <minimumTokens>${maven.compiler.source}</minimumTokens>
+          <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+          <targetJdk>${maven.compiler.target}</targetJdk>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.9</version>
+        <version>${maven-project-info-reports-plugin.version}</version>
         <configuration>
           <url></url>
           <connection></connection>
@@ -438,12 +473,12 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.3</version>
+        <version>${findbugs-maven-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0</version>
+        <version>${jdepend-maven-plugin.version}</version>
       </plugin>
     </plugins>
   </reporting>
@@ -530,7 +565,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
-            <version>2.3</version>
+            <version>${maven-war-plugin.version}</version>
             <configuration>
               <failOnMissingWebXml>false</failOnMissingWebXml>
               <outputDirectory>deployments</outputDirectory>
@@ -542,3 +577,4 @@
     </profile>
   </profiles>
 </project>
+
